@@ -16,3 +16,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('users', 'Admin\UsersController');
     Route::delete('users_mass_destroy', 'Admin\UsersController@massDestroy')->name('users.mass_destroy');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
