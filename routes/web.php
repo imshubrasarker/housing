@@ -19,4 +19,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
 Auth::routes();
 
+Route::resource('land-purchase', 'LandPurchaseController');
+
 Route::get('/home', 'HomeController@index')->name('home');
