@@ -187,7 +187,7 @@
                                         <label for="exampleInputFile">Select Image</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input"  name="picture" id="picture">
+                                                <input type="file" required class="custom-file-input"  name="picture" id="picture">
                                                 <label class="custom-file-label" for="picture">Choose file</label>
                                             </div>
                                             @if ($errors->has('picture'))
