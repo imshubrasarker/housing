@@ -7,7 +7,8 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="{{ route('admin.members.store') }}" method="post">
+            @csrf
             <div class="card-body">
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-4 col-form-label">Donor Name</label>
@@ -60,8 +61,8 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                <button type="submit" class="btn btn-info">Create</button>
-                <button type="submit" class="btn btn-default float-right">Cancel</button>
+                <button type="submit" class="btn btn-info">Submit</button>
+                <button type="button" class="btn btn-default float-right">Cancel</button>
             </div>
             <!-- /.card-footer -->
         </form>
