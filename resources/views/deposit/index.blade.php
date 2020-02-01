@@ -11,32 +11,26 @@
                 <thead>
                 <tr>
                     <th>#SL</th>
-                    <th>Donor Name</th>
-                    <th>Land Volume</th>
-                    <th>Stain Number</th>
-                    <th>Shotok Price</th>
-                    <th>Total Price</th>
-                    <th>Paid Amount</th>
-                    <th>Due Amount</th>
-                    <th width="10%">Action</th>
+                    <th>Slip No</th>
+                    <th>Bank Name</th>
+                    <th>Account No</th>
+                    <th>Amount</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @if ($landPurchases)
-                    @foreach($landPurchases as $purchase)
+                @if ($deposits)
+                    @foreach($deposits as $deposit)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $purchase->donor_name }}</td>
-                            <td>{{ $purchase->land_volume }}</td>
-                            <td>{{ $purchase->stain_number }}</td>
-                            <td>{{ $purchase->shotok_price }}</td>
-                            <td>{{ $purchase->total_price }}</td>
-                            <td>{{ $purchase->paid_amount }}</td>
-                            <td>{{ $purchase->deu_amount }}</td>
+                            <td>{{ $deposit->slip_no }}</td>
+                            <td>{{ $deposit->bank->name }}</td>
+                            <td>{{ $deposit->bank->ac_number }}</td>
+                            <td>{{ $deposit->amount }}</td>
                             <td>
                                 <div style="overflow: hidden">
-                                    <a href="{{ route('land-purchase.edit', $purchase->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
-                                    <form action="{{ route('land-purchase.destroy', $purchase->id) }}" method="post">
+                                    <a href="{{ route('deposit.edit', $deposit->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
+                                    <form action="{{ route('deposit.destroy', $deposit->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-xs btn-danger float-right">Delete</button>
