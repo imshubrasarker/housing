@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLandPurchasesTable extends Migration
+class CreateBaynasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLandPurchasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('land_purchases', function (Blueprint $table) {
+        Schema::create('baynas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('donor_name')->nullable();
             $table->double('land_volume')->nullable();
@@ -34,6 +34,6 @@ class CreateLandPurchasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('land_purchases');
+        Schema::dropIfExists('baynas');
     }
 }

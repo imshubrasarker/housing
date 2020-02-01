@@ -7,8 +7,8 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form class="form-horizontal" action="{{ route('admin.members.store') }}" method="post">
-            @csrf
+        <form class="form-horizontal" action="{{ route('land-purchase.store') }}" method="post">
+            {{ csrf_field() }}
             <div class="card-body">
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-4 col-form-label">Donor Name</label>
@@ -19,7 +19,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Land volume</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="land_volume" placeholder="Land Volume" name="land_volume">
+                        <input type="number" class="form-control" id="land_volume" placeholder="Land Volume" name="land_volume">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -37,7 +37,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Shotok Price</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="shotok_price" placeholder="Shotok Price" name="shotok_price">
+                        <input type="number" class="form-control" id="shotok_price" placeholder="Shotok Price" name="shotok_price">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -67,4 +67,34 @@
             <!-- /.card-footer -->
         </form>
     </div>
+@endsection
+
+@section('footer-script')
+    <script>
+        $(document).ready(function() {
+            function calculate_price() {
+                let price = 0;
+                let land_valume = $('#land_volume').val() ? $('#land_volume').val() : 0;
+                let shotok_price = $('#shotok_price').val() ? $('#shotok_price').val() : 0;
+                let total_price = parseFloat(land_valume) * parseFloat(shotok_price) ;
+                let paid = $('#paid_amount').val() ? $('#paid_amount').val() : 0;
+                let due_amount = total_price - parseFloat(paid);
+
+                $('#deu_amount').val(due_amount);
+                $('#total_price').val(total_price);
+            }
+            $('#land_volume').on('keyup', function () {
+                calculate_price();
+            })
+
+            $('#paid_amount').on('keyup', function () {
+                calculate_price();
+            })
+
+            $('#shotok_price').on('keyup', function () {
+                calculate_price();
+            })
+
+        });
+    </script>
 @endsection

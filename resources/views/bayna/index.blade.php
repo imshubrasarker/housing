@@ -22,21 +22,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if ($landPurchases)
-                    @foreach($landPurchases as $purchase)
+                @if ($baynas)
+                    @foreach($baynas as $bayna)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $purchase->donor_name }}</td>
-                            <td>{{ $purchase->land_volume }}</td>
-                            <td>{{ $purchase->stain_number }}</td>
-                            <td>{{ $purchase->shotok_price }}</td>
-                            <td>{{ $purchase->total_price }}</td>
-                            <td>{{ $purchase->paid_amount }}</td>
-                            <td>{{ $purchase->deu_amount }}</td>
+                            <td>{{ $bayna->donor_name }}</td>
+                            <td>{{ $bayna->land_volume }}</td>
+                            <td>{{ $bayna->stain_number }}</td>
+                            <td>{{ $bayna->shotok_price }}</td>
+                            <td>{{ $bayna->total_price }}</td>
+                            <td>{{ $bayna->paid_amount }}</td>
+                            <td>{{ $bayna->deu_amount }}</td>
                             <td>
                                 <div style="overflow: hidden">
-                                    <a href="{{ route('land-purchase.edit', $purchase->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
-                                    <form action="{{ route('land-purchase.destroy', $purchase->id) }}" method="post">
+                                    <a href="{{ route('bayna.edit', $bayna->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
+                                    <form action="{{ route('bayna.destroy', $bayna->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-xs btn-danger float-right">Delete</button>

@@ -16,4 +16,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 Auth::routes();
 
 Route::resource('land-purchase', 'LandPurchaseController');
+Route::resource('bayna', 'BaynaController');
+Route::resource('plot', 'PlotController');
+Route::resource('bank', 'BankController');
+Route::resource('deposit', 'DepositController');
 Route::get('/home', 'HomeController@index')->name('home');
