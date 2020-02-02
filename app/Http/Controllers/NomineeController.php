@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Member;
 use App\Nominee;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NomineeController extends Controller
 {
@@ -15,7 +17,8 @@ class NomineeController extends Controller
      */
     public function index()
     {
-        //
+        $nominees = Nominee::paginate(20);
+        return view('nominees.index', compact('nominees'));
     }
 
     /**
@@ -48,6 +51,32 @@ class NomineeController extends Controller
             'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2800',
             'member_id' => 'required|numeric'
         ]);
+
+        $path = '';
+        if ($request->hasFile('picture'))
+        {
+            $path = Storage::disk('public')->put('nominees', $request->file('picture'));
+        }
+        $data = [
+          'name' => $request->get('name') ,
+          'hus_father' => $request->get('hus_father') ,
+          'birthday' => $request->get('birthday') ,
+          'nid' => $request->get('nid') ,
+          'nationality' => $request->get('nationality') ,
+          'religion' => $request->get('religion') ,
+          'address' => $request->get('address') ,
+          'picture' => $path ,
+          'member_id' => $request->get('member_id') ,
+        ];
+        if (Nominee::create($data))
+        {
+            Toastr::success('Nominee Successfully Created :)' ,'Success');
+            return redirect()->back();
+        }
+        else {
+            Toastr::error('Something went wrong!' ,'Error');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -58,7 +87,7 @@ class NomineeController extends Controller
      */
     public function show(Nominee $nominee)
     {
-        //
+        return view('nominees.show', compact('nominee'));
     }
 
     /**
@@ -69,7 +98,9 @@ class NomineeController extends Controller
      */
     public function edit(Nominee $nominee)
     {
-        //
+        $members = Member::all();
+        return view('nominees.edit', compact('members', 'nominee'));
+
     }
 
     /**
@@ -81,7 +112,43 @@ class NomineeController extends Controller
      */
     public function update(Request $request, Nominee $nominee)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'hus_father' => 'required|string|max:255',
+            'birthday' => 'required|string|max:255',
+            'nid' => 'nullable|numeric|min:17',
+            'religion' => 'nullable|string|max:255',
+            'nationality' => 'required|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2800',
+            'member_id' => 'required|numeric'
+        ]);
+
+        $path = $nominee->picture;
+        if ($request->hasFile('picture'))
+        {
+            $path = Storage::disk('public')->put('nominees', $request->file('picture'));
+        }
+
+            $nominee->name = $request->get('name');
+            $nominee->hus_father = $request->get('hus_father');
+            $nominee->birthday = $request->get('birthday');
+            $nominee->nid = $request->get('nid');
+            $nominee->nationality = $request->get('nationality');
+            $nominee->religion = $request->get('religion');
+            $nominee->address = $request->get('address');
+            $nominee->picture = $path;
+            $nominee->member_id = $request->get('member_id');
+
+        if ($nominee->save())
+        {
+            Toastr::success('Nominee Updated Successfully :)' ,'Success');
+            return redirect()->back();
+        }
+        else {
+            Toastr::error('Something went wrong!' ,'Error');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -92,6 +159,14 @@ class NomineeController extends Controller
      */
     public function destroy(Nominee $nominee)
     {
-        //
+        if ($nominee->delete())
+        {
+            Toastr::success('Nominee Deleted Successfully :)' ,'Success');
+            return redirect()->back();
+        }
+        else {
+            Toastr::error('Something went wrong!' ,'Error');
+            return redirect()->back();
+        }
     }
 }

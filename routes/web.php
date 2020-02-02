@@ -11,6 +11,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('members','MemberController');
     Route::resource('nominees', 'NomineeController');
+    Route::resource('users', 'UserController');
 
 });
 
