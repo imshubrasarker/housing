@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -118,6 +119,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if ($user->id == Auth::id())
+        {
+            Toastr::error('The user cannot be deleted as you are logged in using this user.' ,'Error');
+            return redirect()->back();
+        }
              if ($user->delete())
              {
                  Toastr::success('User Successfully Deleted :)' ,'Success');
