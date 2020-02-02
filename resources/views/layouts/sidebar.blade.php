@@ -23,8 +23,8 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview">
 
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Members
                             <i class="right fas fa-angle-left"></i>
@@ -47,7 +47,7 @@
                 </li>
 
 
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Land Purchase
@@ -140,25 +140,23 @@
                         </li>
                     </ul>
                     </li>
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Reference
-                <li class="nav-item has-treeview">
+                        <p>Reference</p>
+                        <i class="right fas fa-angle-left"></i>
+                    </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('reference.create') }}" class="nav-link">
-                         <li class="nav-item">
-                            <a href="{{ route('admin.members.index') }}" class="nav-link">
+                            <a href="{{ route('admin.reference.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add Reference</p>
+                                <p>Manage Reference</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('reference.index') }}" class="nav-link">
-                            <a href="{{ route('admin.members.create') }}" class="nav-link">
+                            <a href="{{ route('admin.reference.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Reference</p>
+                                <p>Add New Reference </p>
                             </a>
                         </li>
                     </ul>
