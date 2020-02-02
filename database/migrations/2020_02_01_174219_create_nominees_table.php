@@ -15,6 +15,15 @@ class CreateNomineesTable extends Migration
     {
         Schema::create('nominees', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('hus_father')->nullable();
+            $table->string('address')->nullable();
+            $table->string('religion')->nullable();
+            $table->string('nationality')->nullable();
+            $table->string('nid')->nullable();
+            $table->string('picture')->nullable();
+            $table->string('member_id');
+            $table->string('birthday')->nullable();
             $table->timestamps();
         });
     }

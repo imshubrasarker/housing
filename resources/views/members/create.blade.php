@@ -211,3 +211,17 @@
         </div>
     </div>
 @endsection
+@section('footer-script')
+    <script>
+        $(document).ready(function(){
+            $('input[type="checkbox"]').click(function(){
+                if($(this).prop("checked") == true){
+                    var comment = $.trim($("#present_address").val());
+                    if(comment != ""){
+                        $('#permanent_address').val(comment);
+                    }
+                }
+            });
+        });
+    </script>
+    @endsection
