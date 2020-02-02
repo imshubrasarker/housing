@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateMemberRequest;
+use App\Http\Requests\UpdateMemberRequest;
 use App\Member;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -41,7 +43,7 @@ class MemberController extends Controller
         $picture = '';
         if ($request->hasFile('picture'))
         {
-            $picture = Storage::disk('public')->put('/members', $request->get('picture'));
+            $picture = Storage::disk('public')->put('members', $request->file('picture'));
         }
         $data = [
             'name' => $request->get('name'),
@@ -60,11 +62,13 @@ class MemberController extends Controller
         ];
         if (Member::create($data))
         {
-            return back()->with('success', 'Member added succesfully');
+            Toastr::success('Member Successfully Created :)' ,'Success');
+            return redirect()->back();
         }
         else
         {
             return back()->with('error', 'Something went wrong please try again');
+            return redirect()->back();
         }
 
     }
@@ -77,7 +81,7 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        //
+        return view('members.show',compact('member'));
     }
 
     /**
@@ -88,7 +92,7 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        return view('members.edit',compact('member'));
     }
 
     /**
@@ -98,9 +102,38 @@ class MemberController extends Controller
      * @param  \App\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Member $member)
+    public function update(UpdateMemberRequest $request, Member $member)
     {
-        //
+        $picture = $member->picture;
+        if ($request->hasFile('picture'))
+        {
+            $picture = Storage::disk('public')->put('members', $request->file('picture'));
+        }
+        $member->name = $request->get('name');
+        $member->hus_father = $request->get('hus_father');
+        $member->mother = $request->get('mother');
+        $member->birthday = $request->get('birthday');
+        $member->nid = $request->get('nid');
+        $member->nationality = $request->get('nationality');
+        $member->religion = $request->get('religion');
+        $member->profession = $request->get('profession');
+        $member->email = $request->get('email');
+        $member->present_address = $request->get('present_address');
+        $member->permanent_address = $request->get('permanent_address');
+        $member->mobile = $request->get('mobile');
+        $member->picture = $picture;
+
+        if ($member->save())
+        {
+            Toastr::success('Member updated successfully :)' ,'Success');
+            return redirect()->back();
+        }
+        else
+        {
+            Toastr::error('Something went wrong :(' ,'Error');
+            return redirect()->back();
+        }
+
     }
 
     /**
@@ -111,6 +144,14 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        if ($member->delete())
+        {
+            Toastr::success('Member deleted successfully :)' ,'Success');
+            return redirect()->back();
+        }
+        else{
+            Toastr::error('Something went wrong :(' ,'Error');
+            return redirect()->back();
+        }
     }
 }
