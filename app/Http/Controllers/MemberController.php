@@ -15,7 +15,16 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {//        if ($request->hasFile('image'))
+//        {
+//            $logo = $request->file('image');
+//            $logo_name = uniqid().'.'.strtolower($logo->getClientOriginalExtension());
+//            $path = 'reference/';
+//            $logo_url = $path.$logo_name;
+//            $logo->move($path,$logo_name);
+//        }
+
+        return 1;
         $members = Member::paginate(20);
         return view('members.index', compact('members'));
     }

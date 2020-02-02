@@ -20,4 +20,5 @@ Route::resource('bayna', 'BaynaController');
 Route::resource('plot', 'PlotController');
 Route::resource('bank', 'BankController');
 Route::resource('deposit', 'DepositController');
+Route::resource('reference', 'ReferenceController');
 Route::get('/home', 'HomeController@index')->name('home');
