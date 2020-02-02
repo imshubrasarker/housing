@@ -49,7 +49,7 @@
 
 
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Land Purchase
                             <i class="right fas fa-angle-left"></i>
@@ -86,7 +86,7 @@
 
 
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Plot
                             <i class="right fas fa-angle-left"></i>
@@ -108,16 +108,19 @@
                     </ul>
                 </li>
 
+
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>BanK</p>
+                        <p>Bank
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('bank.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add Plot</p>
+                                <p>Add Bank</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -140,29 +143,54 @@
                         </li>
                     </ul>
                     </li>
-
                 <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Reference
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
+                <li class="nav-item has-treeview">
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('reference.create') }}" class="nav-link">
+                         <li class="nav-item">
+                            <a href="{{ route('admin.members.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Reference</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('reference.index') }}" class="nav-link">
+                            <a href="{{ route('admin.members.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Manage Reference</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+                
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Nominees
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nominees.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Nominees</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nominees.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New Nominee </p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
         </nav>
         <!-- /.sidebar-menu -->
     </div>

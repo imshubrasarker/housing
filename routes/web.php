@@ -10,6 +10,7 @@ Route::patch('change_password', 'Auth\ChangePasswordController@changePassword')-
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('members','MemberController');
+    Route::resource('nominees', 'NomineeController');
 
 });
 

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateMemberRequest extends FormRequest
+class UpdateMemberRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -36,7 +36,7 @@ class CreateMemberRequest extends FormRequest
             'present_address' => 'nullable|string|max:255',
             'permanent_address' => 'nullable|string|max:255',
             'mobile' => 'required|string|max:15|min:11',
-            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2800'
+            'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2800'
         ];
     }
 }

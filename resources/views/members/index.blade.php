@@ -69,9 +69,10 @@
     @include('extra.delete-modal')
 @endsection
 
-@section('js')
+@section('footer-script')
     <script>
         function deleteHead(route){
+            console.log(route)
             $('#deleteForm').attr("action", route);
         }
     </script>
