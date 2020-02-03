@@ -18,14 +18,15 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <title>Plot</title>
+    @yield('header-script')
 </head>
 <body class="hold-transition sidebar-mini">
-
-
 <div class="wrapper">
 
-    @include('layouts.header')
-    @include('layouts.sidebar')
+    @if(Auth::check())
+        @include('layouts.header')
+        @include('layouts.sidebar')
+    @endif
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

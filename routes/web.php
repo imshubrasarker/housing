@@ -11,15 +11,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('members','MemberController');
     Route::resource('nominees', 'NomineeController');
-
+    Route::resource('land-purchase', 'LandPurchaseController');
+    Route::resource('bayna', 'BaynaController');
+    Route::resource('plot', 'PlotController');
+    Route::resource('bank', 'BankController');
+    Route::resource('deposit', 'DepositController');
+    Route::resource('reference', 'ReferenceController');
+    Route::resource('expense-head', 'ExpenceHeadController');
 });
 
 Auth::routes();
-
-Route::resource('land-purchase', 'LandPurchaseController');
-Route::resource('bayna', 'BaynaController');
-Route::resource('plot', 'PlotController');
-Route::resource('bank', 'BankController');
-Route::resource('deposit', 'DepositController');
-Route::resource('reference', 'ReferenceController');
 Route::get('/home', 'HomeController@index')->name('home');
