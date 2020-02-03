@@ -17,16 +17,17 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    @yield('header-script')
     <link rel="stylesheet" href="{{ asset('/plugins/select2/css/select2.min.css') }}">
     <title> @yield('title') | {{ config('app.name', 'Housing Management') }}</title>
 </head>
 <body class="hold-transition sidebar-mini">
-
-
 <div class="wrapper">
 
-    @include('layouts.header')
-    @include('layouts.sidebar')
+    @if(Auth::check())
+        @include('layouts.header')
+        @include('layouts.sidebar')
+    @endif
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
