@@ -148,7 +148,7 @@
                                     <div class="col-12">
                                         <label for="present_address" class="col-sm-12 col-form-label">Present Address <label class="text-danger">*</label></label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="religion" required id="religion" placeholder="Present Address">{{ $member->present_address }}</textarea>
+                                            <textarea class="form-control" name="religion" required id="present_address" placeholder="Present Address">{{ $member->present_address }}</textarea>
                                         </div>
                                         @if ($errors->has('present_address'))
                                             <span class="help-block ml-2 text-danger">
@@ -206,4 +206,18 @@
             </div>
         </div>
     </div>
+@endsection
+@section('footer-script')
+    <script>
+        $(document).ready(function(){
+            $('input[type="checkbox"]').click(function(){
+                if($(this).prop("checked") == true){
+                    var comment = $.trim($("#present_address").val());
+                    if(comment != ""){
+                        $('#permanent_address').val(comment);
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

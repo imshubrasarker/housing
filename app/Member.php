@@ -22,4 +22,9 @@ class Member extends Model
         'picture'
 
     ];
+
+    public function nominee()
+    {
+        return $this->hasMany(Nominee::class);
+    }
 }

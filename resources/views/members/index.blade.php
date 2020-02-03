@@ -60,6 +60,11 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="row">
+                                <div class="pagination">
+                                    {{ $members->links() }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,7 +77,6 @@
 @section('footer-script')
     <script>
         function deleteHead(route){
-            console.log(route)
             $('#deleteForm').attr("action", route);
         }
     </script>
