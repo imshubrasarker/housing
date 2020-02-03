@@ -27,7 +27,7 @@
                                     </ul>
                                 @endif
 
-                                <form action="{{ route('expenses.store') }}" method="post">
+                                <form action="{{ route('admin.expenses.store') }}" method="post">
                                     @csrf
                                    <div class="row mb-2">
                                      <div class="col-md-6 col-sm-12">

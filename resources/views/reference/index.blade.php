@@ -11,7 +11,7 @@
                                 <h3 class="card-title">Manage Reference</h3>
                             </div>
                             <div class="col-md-3 justify-content-end">
-                                <a href="{{ route('reference.create') }}" class="btn float-right btn-dark">
+                                <a href="{{ route('admin.reference.create') }}" class="btn float-right btn-dark">
                                     Add Reference
                                 </a>
                             </div>
@@ -47,13 +47,13 @@
                                     <td>
                                         <div class="row">
                                             <div class="cols-md-4">
-                                                <a class="btn btn-sm btn-primary" href="{{ route('reference.show', $member) }}">View</a>
+                                                <a class="btn btn-sm btn-primary" href="{{ route('admin.reference.show', $member) }}">View</a>
                                             </div>
                                             <div class="cols-md-4">
-                                                <a class="btn btn-sm ml-2 btn-info" href="{{ route('reference.edit', $member) }}">Edit</a>
+                                                <a class="btn btn-sm ml-2 btn-info" href="{{ route('admin.reference.edit', $member) }}">Edit</a>
                                             </div>
                                             <div class="cols-md-4">
-                                                <form action="{{ route('reference.destroy', $member->id) }}" method="post">
+                                                <form action="{{ route('admin.reference.destroy', $member->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-sm ml-2 btn-danger float-right">Delete</button>

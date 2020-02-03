@@ -7,7 +7,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form class="form-horizontal" action="{{ route('land-purchase.store') }}" method="post">
+        <form class="form-horizontal" action="{{ route('admin.land-purchase.store') }}" method="post">
             {{ csrf_field() }}
             <div class="card-body">
                 <div class="form-group row">

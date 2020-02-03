@@ -94,13 +94,13 @@
                                     <td>{{ Carbon\Carbon::parse($expense->date)->format('d-M-Y ') }}</td>
                                     <td>
                                         <a class="btn btn-primary"
-                                           href="{{ route('expenses.edit', $expense->id) }}">
+                                           href="{{ route('admin.expenses.edit', $expense->id) }}">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                     </td>
                                     <td>
                                         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"
-                                                onclick="deleteHead('{{ route('expenses.destroy', $expense->id) }}')">
+                                                onclick="deleteHead('{{ route('admin.expenses.destroy', $expense->id) }}')">
                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                         </button>
                                     </td>
@@ -117,7 +117,7 @@
                             </tbody>
                         </table>
                         <div>
-                            <a href="{{ route('expence.print') }}" class="btn btn-primary print_btn btn-block btn-sm"><i class="fa fa-print"></i> Print</a>
+{{--                            <a href="{{ route('expence.print') }}" class="btn btn-primary print_btn btn-block btn-sm"><i class="fa fa-print"></i> Print</a>--}}
                         </div>
                     </div>
                 </div>

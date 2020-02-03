@@ -7,7 +7,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form class="form-horizontal" action="{{ route('bank.update', $bank->id) }}" method="post">
+        <form class="form-horizontal" action="{{ route('admin.bank.update', $bank->id) }}" method="post">
             @csrf
             @method('put')
             <div class="card-body">

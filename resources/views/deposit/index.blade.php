@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">DataTable with default features</h3>
+            <h3 class="card-title">Manage Deposites</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -29,8 +29,8 @@
                             <td>{{ $deposit->amount }}</td>
                             <td>
                                 <div style="overflow: hidden">
-                                    <a href="{{ route('deposit.edit', $deposit->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
-                                    <form action="{{ route('deposit.destroy', $deposit->id) }}" method="post">
+                                    <a href="{{ route('admin.deposit.edit', $deposit->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
+                                    <form action="{{ route('admin.deposit.destroy', $deposit->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-xs btn-danger float-right">Delete</button>

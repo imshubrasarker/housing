@@ -16,7 +16,7 @@
                     <div class="form-body">
                         <div class="card">
                             <div class="card-body">
-                                <a href="{{ route('expenses.index') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                                <a href="{{ route('admin.expenses.index') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                                 <br>
                                 <br>
                                 @if ($errors->any())
@@ -27,7 +27,7 @@
                                     </ul>
                                 @endif
 
-                                <form action="{{ route('expenses.update', $expense->id) }}" method="post">
+                                <form action="{{ route('admin.expenses.update', $expense->id) }}" method="post">
                                     @csrf
                                     {{ method_field('patch') }}
                                     <div class="row mb-2">

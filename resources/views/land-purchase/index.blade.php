@@ -35,8 +35,8 @@
                             <td>{{ $purchase->deu_amount }}</td>
                             <td>
                                 <div style="overflow: hidden">
-                                    <a href="{{ route('land-purchase.edit', $purchase->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
-                                    <form action="{{ route('land-purchase.destroy', $purchase->id) }}" method="post">
+                                    <a href="{{ route('admin.land-purchase.edit', $purchase->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
+                                    <form action="{{ route('admin.land-purchase.destroy', $purchase->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-xs btn-danger float-right">Delete</button>

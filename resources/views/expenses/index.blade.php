@@ -9,7 +9,7 @@
         <div class="card-header">
             <h3 class="card-title">Add Expense Head</h3>
         </div>
-        <form class="form-horizontal" action="{{ route('expense-head.store') }}" method="post">
+        <form class="form-horizontal" action="{{ route('admin.expense-head.store') }}" method="post">
             {{ csrf_field() }}
             <div class="card-body">
                 <div class="form-group row">
@@ -59,7 +59,7 @@
                             <td>
                                 <button class="btn btn-primary" data-toggle="modal"
                                         data-target="#editModal"
-                                        onclick="editHead('{{ $head->title }}','{{ route('expense-head.edit', $head->id) }}')">
+                                        onclick="editHead('{{ $head->title }}','{{ route('admin.expense-head.edit', $head->id) }}')">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     Edit
                                 </button>
@@ -67,7 +67,7 @@
 
                             <td>
                                 <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"
-                                        onclick="deleteHead('{{ route('expense-head.destroy', $head->id) }}')">
+                                        onclick="deleteHead('{{ route('admin.expense-head.destroy', $head->id) }}')">
                                     Delete
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </button>

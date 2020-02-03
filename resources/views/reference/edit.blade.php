@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('reference.update', $reference->id) }}" method="post">
+                        <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.reference.update', $reference->id) }}" method="post">
                             @csrf
                             @method('put')
                             <div class="card-body">

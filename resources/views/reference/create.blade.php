@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('reference.store') }}" method="post">
+                        <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.reference.store') }}" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">

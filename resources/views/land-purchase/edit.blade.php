@@ -5,7 +5,7 @@
         <div class="card-header">
             <h3 class="card-title">Land Purchase Edit</h3>
         </div>
-        <form class="form-horizontal" action="{{ route('land-purchase.update', $landPurchase->id) }}" method="post">
+        <form class="form-horizontal" action="{{ route('admin.land-purchase.update', $landPurchase->id) }}" method="post">
             @csrf
             @method('put')
             <div class="card-body">

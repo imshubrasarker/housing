@@ -3,11 +3,11 @@
 @section('content')
     <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">Land Purchase Form</h3>
+            <h3 class="card-title">Byna Purchase Form</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form class="form-horizontal" action="{{ route('bayna.store') }}" method="post">
+        <form class="form-horizontal" action="{{ route('admin.bayna.store') }}" method="post">
             {{ csrf_field() }}
             <div class="card-body">
                 <div class="form-group row">

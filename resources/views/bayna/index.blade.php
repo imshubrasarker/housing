@@ -35,8 +35,8 @@
                             <td>{{ $bayna->deu_amount }}</td>
                             <td>
                                 <div style="overflow: hidden">
-                                    <a href="{{ route('bayna.edit', $bayna->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
-                                    <form action="{{ route('bayna.destroy', $bayna->id) }}" method="post">
+                                    <a href="{{ route('admin.bayna.edit', $bayna->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
+                                    <form action="{{ route('admin.bayna.destroy', $bayna->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-xs btn-danger float-right">Delete</button>

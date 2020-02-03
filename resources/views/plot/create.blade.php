@@ -7,7 +7,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form class="form-horizontal" action="{{ route('plot.store') }}" method="post">
+        <form class="form-horizontal" action="{{ route('admin.plot.store') }}" method="post">
             {{ csrf_field() }}
             <div class="card-body">
                 <div class="form-group row">

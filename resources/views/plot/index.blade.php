@@ -33,8 +33,8 @@
                             <td>{{ $plot->quantity }}</td>
                             <td>
                                 <div style="overflow: hidden">
-                                    <a href="{{ route('plot.edit', $plot->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
-                                    <form action="{{ route('plot.destroy', $plot->id) }}" method="post">
+                                    <a href="{{ route('admin.plot.edit', $plot->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
+                                    <form action="{{ route('admin.plot.destroy', $plot->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-xs btn-danger float-right">Delete</button>

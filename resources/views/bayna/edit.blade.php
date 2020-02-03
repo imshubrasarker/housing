@@ -5,7 +5,7 @@
         <div class="card-header">
             <h3 class="card-title">Bayna Edit</h3>
         </div>
-        <form class="form-horizontal" action="{{ route('bayna.update', $bayna->id) }}" method="post">
+        <form class="form-horizontal" action="{{ route('admin.bayna.update', $bayna->id) }}" method="post">
             @csrf
             @method('put')
             <div class="card-body">

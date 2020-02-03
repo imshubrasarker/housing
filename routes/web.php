@@ -18,8 +18,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('deposit', 'DepositController');
     Route::resource('reference', 'ReferenceController');
     Route::resource('expense-head', 'ExpenceHeadController');
+    Route::resource('users', 'UserController');
 });
-Route::resource('users', 'UserController');
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -19,13 +19,13 @@
         </div>
 
         <!-- Sidebar Menu -->
-        <li class="mt-2">
+        <nav>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
 
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item has-treeviewn">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Members
                             <i class="right fas fa-angle-left"></i>
@@ -39,7 +39,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.members.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Member </p>
                             </a>
@@ -48,7 +48,7 @@
                 </li>
 
 
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Land Purchase
@@ -85,7 +85,7 @@
 
 
 
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview ">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Plot
@@ -109,7 +109,7 @@
                 </li>
 
 
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Bank
@@ -144,7 +144,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Reference
@@ -214,7 +214,31 @@
 
                     </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Users
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.users.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New User </p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
             </ul>
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>

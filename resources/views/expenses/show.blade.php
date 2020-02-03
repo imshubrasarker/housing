@@ -7,8 +7,8 @@
 @section('content')
     <div id="page-wrapper">
         <div class="main-page">
-            <a href="{{ route('expenses.index') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-            <a href="{{ route('expenses.edit', $expense->id) }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+            <a href="{{ route('admin.expenses.index') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+            <a href="{{ route('admin.expenses.edit', $expense->id) }}" title="Edit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
             <br>
             <br>
             @include('layouts.include.alert')

@@ -3,11 +3,11 @@
 @section('content')
     <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">Add Bank</h3>
+            <h3 class="card-title">Add Deposite</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form class="form-horizontal" action="{{ route('deposit.store') }}" method="post">
+        <form class="form-horizontal" action="{{ route('admin.deposit.store') }}" method="post">
             {{ csrf_field() }}
             <div class="card-body">
                 <div class="form-group row">
