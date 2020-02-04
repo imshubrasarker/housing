@@ -17,7 +17,7 @@ class ExpenceController extends Controller
     public function index()
     {
         $total = Expence::sum('amount');
-        $expenses = Expence::all();
+        $expenses = Expence::with('expenseHead')->paginate(20);
         return view('expenses.manage-expenses', compact('expenses', 'total'));
     }
 
@@ -87,9 +87,22 @@ class ExpenceController extends Controller
      * @param  \App\Expence  $expence
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Expence $expence)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'expence_head_id' => 'required',
+            'date' => 'required',
+            'amount' => 'required'
+        ]);
+        $expense = Expence::findOrFail($id);
+        $expense->expence_head_id = $request->expence_head_id;
+        $expense->date = $request->date;
+        $expense->description = $request->description;
+        $expense->note = $request->note;
+        $expense->amount = $request->amount;
+        $expense->save();
+        Toastr::success('Expense  Updated ! :)' ,'Success');
+        return redirect()->back();
     }
 
     /**
@@ -98,8 +111,11 @@ class ExpenceController extends Controller
      * @param  \App\Expence  $expence
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Expence $expence)
+    public function destroy($id)
     {
-        //
+        $expense = Expence::findOrFail($id);
+        $expense->delete();
+        Toastr::success('Expense Deleted Updated ! :)' ,'Success');
+        return redirect()->back();
     }
 }

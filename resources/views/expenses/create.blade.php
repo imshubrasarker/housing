@@ -28,7 +28,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Date</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" id="date" placeholder="" name="date">
+                        <input type="date" value="{{ date("Y-m-d") }}" class="form-control" id="date" placeholder="" name="date">
                     </div>
                 </div>
 

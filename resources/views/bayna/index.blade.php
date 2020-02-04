@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card">
+    <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">DataTable with default features</h3>
+            <h3 class="card-title">Manage Bayna</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -36,11 +36,9 @@
                             <td>
                                 <div style="overflow: hidden">
                                     <a href="{{ route('admin.bayna.edit', $bayna->id) }}" class="btn btn-primary btn-xs float-left">Edit</a>
-                                    <form action="{{ route('admin.bayna.destroy', $bayna->id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-xs btn-danger float-right">Delete</button>
-                                    </form>
+                                    <button class="btn btn-xs float-right btn-danger" data-toggle="modal" data-target="#deleteModal"
+                                            onclick="deleteHead('{{ route('admin.bayna.destroy', $bayna->id) }}')">
+                                        Delete </button>
                                 </div>
                             </td>
                         </tr>
@@ -51,4 +49,13 @@
         </div>
         <!-- /.card-body -->
     </div>
+    @include('extra.delete-modal')
+@endsection
+
+@section('footer-script')
+    <script>
+        function deleteHead(route){
+            $('#deleteForm').attr("action", route);
+        }
+    </script>
 @endsection

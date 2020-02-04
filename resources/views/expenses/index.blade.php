@@ -26,9 +26,9 @@
     </div>
 
     <section class="content">
-        <div class="card">
+        <div class="card card-info">
             <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                <h3 class="card-title">Manage Expense Heads</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -38,8 +38,6 @@
                         <th>#SL</th>
                         <th>Name</th>
                         <th>Created</th>
-{{--                        <th>Total Expense</th>--}}
-{{--                        <th>View</th>--}}
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -50,12 +48,6 @@
                             <th scope="row">{{ $loop->index +1 }}</th>
                             <td>{{ $head->name }}</td>
                             <td>{{ Carbon\Carbon::parse($head->created_at)->format('d-M-Y ') }}</td>
-{{--                            <td>{{ $head->expenses->sum('amount') }}</td>--}}
-{{--                            <td>--}}
-{{--                                <a href="{{ route('view-head', $head->id) }}" class="btn btn-info">--}}
-{{--                                    <i class="fa fa-eye" aria-hidden="true"></i>--}}
-{{--                                </a>--}}
-{{--                            </td>--}}
                             <td>
                                 <button class="btn btn-primary" data-toggle="modal"
                                         data-target="#editModal"
@@ -66,16 +58,11 @@
                             </td>
 
                             <td>
-                                <form action="{{ route('admin.expense-head.destroy', $head->id) }}" method="post">
-                                    @csrf
-                                    {{ method_field('delete') }}
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete<i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                </form>
-{{--                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"--}}
-{{--                                        onclick="deleteHead('{{ route('admin.expense-head.destroy', $head->id) }}')">--}}
-{{--                                    Delete--}}
-{{--                                    <i class="fa fa-trash-o" aria-hidden="true"></i>--}}
-{{--                                </button>--}}
+                                <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal"
+                                        onclick="deleteHead('{{ route('admin.expense-head.destroy', $head->id) }}')">
+                                    Delete
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </button>
                             </td>
                         </tr>
                     @endforeach
@@ -85,6 +72,7 @@
             <!-- /.card-body -->
         </div>
     </section>
+    @include('extra.delete-modal')
     @include('expenses.shared.edit-modal')
 @endsection
 

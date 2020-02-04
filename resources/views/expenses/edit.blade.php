@@ -16,11 +16,11 @@
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-4 col-form-label">Expense Head</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="expenses_heads_id">
+                        <select class="form-control" name="expence_head_id">
                             <option value="">Select Expense Head</option>
-                            <option value="0">Flash</option>
+                            <option {{ $expense->expence_head_id == 0 ? 'selected' : '' }} value="0">Flash</option>
                             @foreach($heads as $head)
-                                <option value="{{ $head->id }}">{{ $head->name }}</option>
+                                <option {{ $head->id == $expense->expence_head_id ? 'selected' : '' }} value="{{ $head->id }}">{{ $head->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -28,28 +28,28 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Date</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" id="date" placeholder="" name="date">
+                        <input type="date" required class="form-control" value="{{ $expense->date }}" id="date" placeholder="" name="date">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Description</label>
                     <div class="col-sm-8">
-                        <textarea name="description" id="description" class="form-control"></textarea>
+                        <textarea name="description" id="description" class="form-control">{{ $expense->description }}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Note</label>
                     <div class="col-sm-8">
-                        <textarea name="note" id="note" class="form-control"></textarea>
+                        <textarea name="note" id="note" class="form-control">{{ $expense->note }}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Amount</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="amount" placeholder="" name="amount">
+                        <input type="text" value="{{ $expense->amount }}" class="form-control" id="amount" placeholder="" name="amount">
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                <button type="submit" class="btn btn-info float-right">Create</button>
+                <button type="submit" class="btn btn-info float-right">Update</button>
             </div>
             <!-- /.card-footer -->
         </form>

@@ -6,9 +6,16 @@
 @endsection
 @section('content')
     <section class="content">
-        <div class="card">
+        <div class="card card-info">
             <div class="card-header" style="overflow:hidden;">
-                <h3 class="card-title">Expenses</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <h3 class="card-title">Expenses</h3>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="card-title float-right">Total Expense: {{ $total }}</h3>
+                    </div>
+                </div>
             </div>
             <form action="#" method="get">
                 @csrf
@@ -63,7 +70,11 @@
                     @foreach ($expenses as $expense)
                         <tr>
                             <th scope="row">{{ $loop->index +1 }}</th>
-                            <td>{{ $expense->expenseHead->name }}</td>
+                            @if($expense->expence_head_id == 0 )
+                                <td>Flash Sell</td>
+                            @else
+                            <td>{{ $expense->expenseHead['name'] }}</td>
+                            @endif
                             <td>{{ $expense->description }}</td>
                             <td>{{ $expense->note }}</td>
                             <td>{{ $expense->amount }}</td>
@@ -71,21 +82,23 @@
                                 <a href="{{ route('admin.expense.edit', $expense->id) }}" class="btn btn-sm btn-primary">Edit</a>
                             </td>
                             <td>
-                                <form action="{{ route('admin.expense.destroy', $expense->id) }}" method="post">
-                                    @csrf
-                                    {{ method_field('delete') }}
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete<i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                </form>
+                                <button class="btn btn-sm  btn-danger" data-toggle="modal" data-target="#deleteModal"
+                                        onclick="deleteHead('{{ route('admin.expense.destroy', $expense->id) }}')">
+                                    Delete
+                                </button>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <div class="pagination">
+                    {{ $expenses->links() }}
+                </div>
             </div>
             <!-- /.card-body -->
         </div>
     </section>
-
+    @include('extra.delete-modal')
 @endsection
 
 @section('footer-script')
@@ -110,10 +123,6 @@
         $('.input-group.date').datepicker({format: "yyyy-mm-dd"});
         $('#customer_id').select2();
         $('#customer_mobile').select2();
-    </script>
-
-    <script>
-
         function deleteHead(route) {
             $('#deleteForm').attr("action", route);
         }

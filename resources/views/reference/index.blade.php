@@ -53,11 +53,10 @@
                                                 <a class="btn btn-sm ml-2 btn-info" href="{{ route('admin.reference.edit', $member) }}">Edit</a>
                                             </div>
                                             <div class="cols-md-4">
-                                                <form action="{{ route('admin.reference.destroy', $member->id) }}" method="post">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-sm ml-2 btn-danger float-right">Delete</button>
-                                                </form>
+                                                <button class="btn btn-sm ml-2 btn-danger" data-toggle="modal" data-target="#deleteModal"
+                                                        onclick="deleteHead('{{ route('admin.members.destroy', $member) }}')">
+                                                    Delete
+                                                </button>
                                             </div>
                                         </div>
                                     </td>
@@ -74,7 +73,7 @@
     @include('extra.delete-modal')
 @endsection
 
-@section('js')
+@section('footer-script')
     <script>
         function deleteHead(route){
             $('#deleteForm').attr("action", route);
