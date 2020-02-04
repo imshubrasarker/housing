@@ -54,7 +54,7 @@
                                             </div>
                                             <div class="cols-md-4">
                                                 <button class="btn btn-sm ml-2 btn-danger" data-toggle="modal" data-target="#deleteModal"
-                                                        onclick="deleteHead('{{ route('admin.members.destroy', $member) }}')">
+                                                        onclick="deleteHead('{{ route('admin.reference.destroy', $member) }}')">
                                                     Delete
                                                 </button>
                                             </div>
