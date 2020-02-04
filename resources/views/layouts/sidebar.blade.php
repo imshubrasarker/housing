@@ -3,7 +3,7 @@
     <a href="index3.html" class="brand-link">
         <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Housing</span>
     </a>
 
     <!-- Sidebar -->
@@ -14,7 +14,7 @@
                 <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">Demo Admin</a>
             </div>
         </div>
 
@@ -26,21 +26,21 @@
 
                 <li class="nav-item has-treeviewn">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-users"></i>
                         <p>Members
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li>
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.members.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-tasks"></i>
                                 <p>Manage Members</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.members.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-plus"></i>
                                 <p>Add New Member </p>
                             </a>
                         </li>
@@ -50,34 +50,34 @@
 
                 <li class="nav-item has-treeview ">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-store-alt"></i>
                         <p>Land Purchase
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.land-purchase.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Land Purchase</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.land-purchase.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-tasks"></i>
                                 <p>Manage Land Purchase</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.bayna.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Bayna</p>
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.land-purchase.create') }}" class="nav-link">
+                                <i class="fas fa-plus"></i>
+                                <p>Add Land Purchase</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.bayna.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-tasks"></i>
                                 <p>Manage Bayna</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.bayna.create') }}" class="nav-link">
+                                <i class="fas fa-plus"></i>
+                                <p>Add Bayna</p>
                             </a>
                         </li>
                     </ul>
@@ -87,22 +87,22 @@
 
                 <li class="nav-item has-treeview ">
                     <a href="#" class="nav-link ">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-drafting-compass"></i>
                         <p>Plot
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.plot.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Plot</p>
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.plot.index') }}" class="nav-link">
+                                <i class="fas fa-tasks"></i>
+                                <p>Manage Plot</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.plot.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Plot</p>
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.plot.create') }}" class="nav-link">
+                                <i class="fas fa-plus"></i>
+                                <p>Add Plot</p>
                             </a>
                         </li>
                     </ul>
@@ -111,33 +111,33 @@
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-university"></i>
                         <p>Bank
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.bank.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Bank</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.bank.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-tasks"></i>
                                 <p>Manage Bank</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.bank.create') }}" class="nav-link">
+                                <i class="fas fa-plus"></i>
+                                <p>Add Bank</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.deposit.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-tasks"></i>
                                 <p>Manage Deposit</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.deposit.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-plus"></i>
                                 <p>Add Deposit</p>
                             </a>
                         </li>
@@ -146,22 +146,22 @@
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fab fa-atlassian"></i>
                         <p>Reference
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.reference.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add Reference</p>
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.reference.index') }}" class="nav-link">
+                                <i class="fas fa-tasks"></i>
+                                <p>Manage Reference</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.reference.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Reference</p>
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.reference.create') }}" class="nav-link">
+                                <i class="fas fa-plus"></i>
+                                <p>Add Reference</p>
                             </a>
                         </li>
                     </ul>
@@ -169,21 +169,21 @@
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fab fa-accusoft"></i>
                         <p>Nominees
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.nominees.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-tasks"></i>
                                 <p>Manage Nominees</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.nominees.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-plus"></i>
                                 <p>Add New Nominee </p>
                             </a>
                         </li>
@@ -193,49 +193,49 @@
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-minus-circle"></i>
                         <p>Expense
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.expense-head.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fab fa-accusoft"></i>
                                 <p>Manage Expense Head</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.expense.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add New Expense </p>
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.expense.index') }}" class="nav-link">
+                                <i class="fas fa-tasks"></i>
+                                <p>Manage Expense </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.expense.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Expense </p>
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.expense.create') }}" class="nav-link">
+                                <i class="fas fa-plus"></i>
+                                <p>Add New Expense </p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fas fa-user-shield"></i>
                         <p>Users
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.users.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-tasks"></i>
                                 <p>Manage Users</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ml-3">
                             <a href="{{ route('admin.users.create') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-plus"></i>
                                 <p>Add New User </p>
                             </a>
                         </li>

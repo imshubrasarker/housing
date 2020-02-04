@@ -34,7 +34,7 @@
                                 <tbody>
                                 @foreach($members as $member)
                                 <tr>
-                                    <td>{{ $loop->index +1 }}</td>
+                                    <td>{{ $member->serial_id }}</td>
                                     <td>{{ $member->name}}</td>
                                     <td>{{ $member->hus_father }}</td>
                                     <td>{{ $member->mother }}</td>

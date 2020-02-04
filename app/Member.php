@@ -19,8 +19,8 @@ class Member extends Model
         'mobile',
         'email',
         'nid',
-        'picture'
-
+        'picture',
+        'serial_id'
     ];
 
     public function nominee()
