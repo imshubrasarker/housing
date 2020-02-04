@@ -28,6 +28,16 @@
                              </div>
 
                          </div>
+
+                         <div class="row">
+                             <div class="col-md-6">
+                                 <strong><i class="fas fa-signature"></i> Member Id</strong>
+                                 <p class="text-muted text-capitalize">
+                                     {{ $member->serial_id }}
+                                 </p>
+                             </div>
+                         </div>
+                         <hr>
                             <div class="row">
                                 <div class="col-md-6">
                                     <strong><i class="fas fa-signature"></i> Name</strong>

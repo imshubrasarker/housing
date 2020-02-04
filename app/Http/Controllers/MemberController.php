@@ -40,6 +40,12 @@ class MemberController extends Controller
      */
     public function store(CreateMemberRequest $request)
     {
+        $record = Member::latest()->count();
+        if ($record == 0) {
+            $record = 0;
+        }
+        $nextMemberId = $record + 1;
+
         $picture = '';
         if ($request->hasFile('picture'))
         {
@@ -59,6 +65,7 @@ class MemberController extends Controller
             'email' => $request->get('email'),
             'nid' => $request->get('nid'),
             'picture' => $picture,
+            'serial_id' => str_pad($nextMemberId,6,"0",STR_PAD_LEFT),
         ];
         if (Member::create($data))
         {
