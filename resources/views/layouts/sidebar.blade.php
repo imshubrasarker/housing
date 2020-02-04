@@ -206,12 +206,17 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.expense-head.create') }}" class="nav-link">
+                            <a href="{{ route('admin.expense.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add New Expense Head </p>
+                                <p>Add New Expense </p>
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="{{ route('admin.expense.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Expense </p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">

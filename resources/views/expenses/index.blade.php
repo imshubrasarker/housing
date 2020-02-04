@@ -59,18 +59,23 @@
                             <td>
                                 <button class="btn btn-primary" data-toggle="modal"
                                         data-target="#editModal"
-                                        onclick="editHead('{{ $head->title }}','{{ route('admin.expense-head.edit', $head->id) }}')">
+                                        onclick="editHead('{{ $head->name }}','{{ route('admin.expense-head.update', $head->id) }}')">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     Edit
                                 </button>
                             </td>
 
                             <td>
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"
-                                        onclick="deleteHead('{{ route('admin.expense-head.destroy', $head->id) }}')">
-                                    Delete
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                </button>
+                                <form action="{{ route('admin.expense-head.destroy', $head->id) }}" method="post">
+                                    @csrf
+                                    {{ method_field('delete') }}
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete<i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                </form>
+{{--                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"--}}
+{{--                                        onclick="deleteHead('{{ route('admin.expense-head.destroy', $head->id) }}')">--}}
+{{--                                    Delete--}}
+{{--                                    <i class="fa fa-trash-o" aria-hidden="true"></i>--}}
+{{--                                </button>--}}
                             </td>
                         </tr>
                     @endforeach
@@ -80,7 +85,7 @@
             <!-- /.card-body -->
         </div>
     </section>
-
+    @include('expenses.shared.edit-modal')
 @endsection
 
 @section('footer-script')

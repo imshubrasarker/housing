@@ -14,7 +14,7 @@
 
                     <div class="form-group">
                         <label class="control-label mb-2">Expenses Head Title</label>
-                        <input type="text" class="form-control" id="head_title" name="title" placeholder="Expenses Head Title" required>
+                        <input type="text" class="form-control" id="head_title" name="name" placeholder="Expenses Head Title" required>
 
                     </div>
                 </div>
