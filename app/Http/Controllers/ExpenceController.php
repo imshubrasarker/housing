@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Expence;
 use App\ExpenceHead;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class ExpenceController extends Controller
@@ -39,7 +40,20 @@ class ExpenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'expenses_heads_id' => 'required',
+            'date' => 'required',
+            'amount' => 'required'
+        ]);
+        $expense = new Expence();
+        $expense->expence_head_id = $request->expenses_heads_id;
+        $expense->date = $request->date;
+        $expense->description = $request->description;
+        $expense->note = $request->note;
+        $expense->amount = $request->amount;
+        $expense->save();
+        Toastr::success('Expense Head Created ! :)' ,'Success');
+        return redirect()->back();
     }
 
     /**
@@ -50,7 +64,7 @@ class ExpenceController extends Controller
      */
     public function show(Expence $expence)
     {
-        
+
     }
 
     /**
@@ -59,9 +73,11 @@ class ExpenceController extends Controller
      * @param  \App\Expence  $expence
      * @return \Illuminate\Http\Response
      */
-    public function edit(Expence $expence)
+    public function edit($id)
     {
-        //
+        $expense = Expence::findOrFail($id);
+        $heads = ExpenceHead::all();
+        return view('expenses.edit', compact('expense', 'heads'));
     }
 
     /**

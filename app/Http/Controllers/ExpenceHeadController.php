@@ -87,9 +87,17 @@ class ExpenceHeadController extends Controller
      * @param  \App\ExpenceHead  $expenceHead
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ExpenceHead $expenceHead)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:120',
+        ]);
+        $expenceHead = ExpenceHead::findOrFail($id);
+        $expenceHead->name = $request->get('name');
+        $expenceHead->slug = Str::slug($request->name, '-');
+        $expenceHead->save();
+        Toastr::success('Expense Head Updated ! :)' ,'Success');
+        return redirect()->back();
     }
 
     /**
@@ -98,8 +106,11 @@ class ExpenceHeadController extends Controller
      * @param  \App\ExpenceHead  $expenceHead
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ExpenceHead $expenceHead)
+    public function destroy($id)
     {
-        //
+        $eh = ExpenceHead::findOrFail($id);
+        $eh->delete();
+        Toastr::success('Expense Head Deleted ! :)' ,'Success');
+        return redirect()->back();
     }
 }
