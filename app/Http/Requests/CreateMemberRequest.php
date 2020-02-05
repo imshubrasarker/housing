@@ -36,7 +36,8 @@ class CreateMemberRequest extends FormRequest
             'present_address' => 'nullable|string|max:255',
             'permanent_address' => 'nullable|string|max:255',
             'mobile' => 'required|string|max:15|min:11',
-            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2800'
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2800',
+            'member_id' => 'required|numeric'
         ];
     }
 }

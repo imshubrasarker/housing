@@ -15,9 +15,21 @@ class NomineeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $nominees = Nominee::paginate(20);
+        if ($request->get('query'))
+        {
+            $query = $request->get('query');
+            $nominees = Nominee::where('name', 'like', '%'.$query.'%')
+            ->orWhere('hus_father', 'like', '%'.$query.'%')
+            ->orWhere('nid', 'like', '%'.$query.'%')
+            ->orWhere('member_id', 'like', '%'.$query.'%')
+            ->paginate(20);
+        }
+        else
+        {
+            $nominees = Nominee::paginate(20);
+        }
         return view('nominees.index', compact('nominees'));
     }
 

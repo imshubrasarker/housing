@@ -18,13 +18,29 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <div class="row mb-4 ">
+                            <div class="col-12">
+                                <form class="form-inline float-right ml-3" action="{{ route('admin.nominees.index') }}" method="get">
+                                    @csrf
+                                    <div class="input-group input-group-sm">
+                                        <input class="form-control form-control-navbar" name="query"  type="search" placeholder="Search" aria-label="Search">
+                                        <div class="input-group-append">
+                                            <button class="btn border-secondary btn-navbar" type="submit">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="table-responsive overflow-auto">
+                            @if(count($nominees))
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                 <tr>
                                     <th>SL</th>
                                     <th>Name</th>
-                                    <th>Member Name</th>
+                                    <th>Member Name & ID</th>
                                     <th>Father/Husband</th>
                                     <th >National ID</th>
                                     <th>Actions</th>
@@ -35,7 +51,7 @@
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $nominee->name}}</td>
-                                        <td>{{ $nominee->member['name'] }}</td>
+                                        <td>{{ $nominee->member['name'] }}  ({{ $nominee->member['serial_id'] }})</td>
                                         <td>{{ $nominee->hus_father }}</td>
                                         <td width="20%">{{ $nominee->nid }}</td>
                                         <td>
@@ -58,6 +74,16 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            @else
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert text-center alert-default-secondary">
+                                        No Data Found!
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="row">
                                 <div class="pagination">
                                     {{ $nominees->links() }}

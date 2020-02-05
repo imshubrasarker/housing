@@ -12,10 +12,30 @@
                             </div>
                         </div>
                     </div>
+                    @php
+                        $record = \App\Member::latest()->count();
+                        if ($record == 0) {
+                            $record = 0;
+                        }
+                        $nextMemberId = $record + 1;
+                        $member_id = str_pad($nextMemberId, 6, "0", STR_PAD_LEFT)
+                    @endphp
                     <div class="card-body">
                         <form class="form-horizontal" enctype="multipart/form-data" action="{{ route('admin.members.store') }}" method="post">
                             @csrf
                             <div class="card-body">
+                                <div class="form-group row">
+                                    <div class="col-8 offset-3">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <label for="member_id" class="col-form-label">Member ID:</label>
+                                            </div>
+                                            <div class="col-8">
+                                               <input type="text" readonly value="{{ $member_id }}" class="form-control" id="member_id" required name="member_id" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-6">
                                         <label for="name" class="col-sm-10 col-form-label">Member Name <label class="text-danger">*</label></label>
@@ -184,7 +204,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-4">
-                                        <label for="exampleInputFile">Select Image</label>
+                                        <label for="exampleInputFile">Select Image <label class="text-danger">*</label></label>
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" required class="custom-file-input"  name="picture" id="picture">

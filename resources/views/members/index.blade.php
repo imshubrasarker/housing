@@ -18,11 +18,27 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <div class="row mb-4 ">
+                            <div class="col-12">
+                                <form class="form-inline float-right ml-3" action="{{ route('admin.members.index') }}" method="get">
+                                    @csrf
+                                    <div class="input-group input-group-sm">
+                                        <input class="form-control form-control-navbar" name="query" type="search" placeholder="Search" aria-label="Search">
+                                        <div class="input-group-append">
+                                            <button class="btn border-secondary btn-navbar" type="submit">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="table-responsive overflow-auto">
+                            @if(count($members))
                             <table class="table table-head-fixed text-nowrap">
                                 <thead>
                                 <tr>
-                                    <th>SL</th>
+                                    <th>Member ID</th>
                                     <th>Name</th>
                                     <th>Father/Husband</th>
                                     <th>Mother</th>
@@ -60,6 +76,15 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            @else
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="alert text-center alert-default-secondary">
+                                            No Data Found!
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                             <div class="row">
                                 <div class="pagination">
                                     {{ $members->links() }}
