@@ -45,9 +45,9 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <strong><i class="fas fa-signature"></i> Member Name</strong>
+                                    <strong><i class="fas fa-signature"></i> Member Name & ID</strong>
                                     <p class="text-muted text-capitalize">
-                                        {{ $nominee->member['name'] }}
+                                        <a target="_blank" href="{{ route('admin.members.show', $nominee->member) }}">{{ $nominee->member['name'] }}  ({{ $nominee->member['serial_id'] }})</a>
                                     </p>
                                 </div>
                                 <div class="col-md-6">

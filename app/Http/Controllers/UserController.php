@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Nominee;
 use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -14,9 +15,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(20);
+        if ($request->get('query'))
+        {
+            $query = $request->get('query');
+            $users = User::where('name', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%')
+                ->paginate(20);
+        }
+        else{
+            $users = User::paginate(20);
+        }
         return view('users.index', compact('users'));
     }
 

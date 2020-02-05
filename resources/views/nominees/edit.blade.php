@@ -114,7 +114,7 @@
                                         <div class="col-sm-10">
                                             <select class="form-control select2" required name="member_id" id="member_id">
                                                 @foreach($members as $member)
-                                                    <option {{ $member->id == $nominee->member_id ? 'selected' : '' }} value="{{ $member->id }}">{{ $member->name }}</option>
+                                                    <option {{ $member->id == $nominee->member_id ? 'selected' : '' }} value="{{ $member->id }}">{{ $member->name }}  ({{ $member->serial_id }})</option>
                                                 @endforeach
                                             </select>
                                         </div>

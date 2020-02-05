@@ -16,9 +16,23 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $members = Member::paginate(20);
+        if ($request->get('query'))
+        {
+            $query = $request->get('query');
+            $members = Member::where('name', 'like', '%'.$query.'%')
+                ->orWhere('hus_father', 'like', '%'.$query.'%')
+                ->orWhere('mother', 'like', '%'.$query.'%')
+                ->orWhere('serial_id', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%')
+                ->orWhere('mobile', 'like', '%'.$query.'%')
+                ->orWhere('nid', 'like', '%'.$query.'%')
+                ->paginate(20);
+        }
+        else {
+            $members = Member::paginate(20);
+        }
         return view('members.index', compact('members'));
     }
 
@@ -40,11 +54,6 @@ class MemberController extends Controller
      */
     public function store(CreateMemberRequest $request)
     {
-        $record = Member::latest()->count();
-        if ($record == 0) {
-            $record = 0;
-        }
-        $nextMemberId = $record + 1;
 
         $picture = '';
         if ($request->hasFile('picture'))
@@ -65,7 +74,7 @@ class MemberController extends Controller
             'email' => $request->get('email'),
             'nid' => $request->get('nid'),
             'picture' => $picture,
-            'serial_id' => str_pad($nextMemberId,6,"0",STR_PAD_LEFT),
+            'serial_id' => $request->get('member_id'),
         ];
         if (Member::create($data))
         {

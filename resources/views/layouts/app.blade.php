@@ -20,6 +20,11 @@
     @yield('header-script')
     <link rel="stylesheet" href="{{ asset('/plugins/select2/css/select2.min.css') }}">
     <title> @yield('title') | {{ config('app.name', 'Housing Management') }}</title>
+    <style>
+        .select2-container .select2-selection--single {
+            height: 38px;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

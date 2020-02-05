@@ -112,8 +112,9 @@
                                         <label for="religion" class="col-sm-12 col-form-label">Select The Member The Nominee Belongs To <label class="text-danger">*</label></label>
                                         <div class="col-sm-10">
                                             <select class="form-control select2" required name="member_id" id="member_id">
+                                                <option value="">Select The Member The Nominee Belongs To </option>
                                                 @foreach($members as $member)
-                                                <option value="{{ $member->id }}">{{ $member->name }}</option>
+                                                <option value="{{ $member->id }}">{{ $member->name }} ({{ $member->serial_id }})</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -126,7 +127,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-5">
-                                        <label for="exampleInputFile">Select Image</label>
+                                        <label for="exampleInputFile">Select Image <label class="text-danger">*</label></label>
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" required class="custom-file-input"  name="picture" id="picture">

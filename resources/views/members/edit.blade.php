@@ -7,8 +7,11 @@
                 <div class="card card-info">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-9">
-                                <h3 class="card-title"><strong>Edit member: </strong>{{ $member->name }}</h3>
+                            <div class="col-md-6">
+                                <h3 class="card-title"><strong>Edit member: </strong>{{ $member->name }} </h3>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="card-title"><strong>Member ID: </strong>{{ $member->serial_id }} </h3>
                             </div>
                         </div>
                     </div>
@@ -17,6 +20,19 @@
                             @csrf
                             @method('patch')
                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        @if($member->picture)
+                                            <img style="width: 100px" class="profile-user-img img-fluid img-circle"
+                                                 src="{{ asset('/storage/'.$member->picture) }}"
+                                                 alt="User profile picture">
+                                        @else
+                                            <img style="width: 100px" class="profile-user-img img-fluid img-circle"
+                                                 src="/images/placeholder.png"
+                                                 alt="User profile picture">
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-6">
                                         <label for="name" class="col-sm-10 col-form-label">Member Name <label class="text-danger">*</label></label>
