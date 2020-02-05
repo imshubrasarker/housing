@@ -83,8 +83,6 @@
                     </ul>
                 </li>
 
-
-
                 <li class="nav-item has-treeview ">
                     <a href="#" class="nav-link ">
                         <i class="fas fa-drafting-compass"></i>
@@ -108,6 +106,28 @@
                     </ul>
                 </li>
 
+                <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link">
+                        <i class="fab fa-sellcast"></i>
+                        <p>Sales
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.sale.index') }}" class="nav-link">
+                                <i class="fas fa-tasks"></i>
+                                <p>Manage Sales</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-3">
+                            <a href="{{ route('admin.sale.create') }}" class="nav-link">
+                                <i class="fas fa-plus"></i>
+                                <p>Add Sales</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
