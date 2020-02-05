@@ -27,4 +27,8 @@ class Member extends Model
     {
         return $this->hasMany(Nominee::class);
     }
+
+    public function sales() {
+        return $this->hasMany(Sale::class, 'member_id');
+    }
 }

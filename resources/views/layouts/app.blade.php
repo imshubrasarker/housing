@@ -17,6 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="{{ asset('/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     @yield('header-script')
     <link rel="stylesheet" href="{{ asset('/plugins/select2/css/select2.min.css') }}">
     <title> @yield('title') | {{ config('app.name', 'Housing Management') }}</title>
@@ -67,8 +69,9 @@
 <script src="{{ asset('/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <script src="{{ asset('/dist/js/adminlte.js') }}"></script>
-
+<script src="{{ asset('/plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 {!! Toastr::message() !!}
 <script>
     @if($errors->any())
