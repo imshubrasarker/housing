@@ -14,9 +14,24 @@ class ReferenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $references = Reference::all();
+        $query = $request->get('query');
+        if ($query)
+        {
+            $references = Reference::where('name', 'like', '%'.$query.'%')
+                ->orWhere('father_name', 'like', '%'.$query.'%')
+                ->orWhere('mother_name', 'like', '%'.$query.'%')
+                ->orWhere('nid', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%')
+                ->orWhere('permanent_address', 'like', '%'.$query.'%')
+                ->orWhere('present_address', 'like', '%'.$query.'%')
+                ->orWhere('mobile', 'like', '%'.$query.'%')
+                ->paginate(20);
+        }
+        else {
+            $references = Reference::paginate(20);
+        }
         return view('reference.index', compact('references'));
     }
 

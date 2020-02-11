@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\LandPurchase;
+use App\Plot;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\New_;
@@ -14,9 +15,25 @@ class LandPurchaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $landPurchases = LandPurchase::all();
+        $query = $request->get('query');
+        if ($query)
+        {
+            $landPurchases = LandPurchase::where('donor_name', 'like', '%'.$query.'%')
+                ->orWhere('land_volume', 'like', '%'.$query.'%')
+                ->orWhere('stain_number', 'like', '%'.$query.'%')
+                ->orWhere('ledger', 'like', '%'.$query.'%')
+                ->orWhere('shotok_price', 'like', '%'.$query.'%')
+                ->orWhere('total_price', 'like', '%'.$query.'%')
+                ->orWhere('paid_amount', 'like', '%'.$query.'%')
+                ->orWhere('deu_amount', 'like', '%'.$query.'%')
+                ->paginate(20);
+        }
+        else
+        {
+            $landPurchases = LandPurchase::paginate(20);
+        }
         return view('land-purchase.index', compact('landPurchases'));
     }
 

@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <form action="#" method="get">
+            <form action="{{ route('admin.expense.index') }}" method="get">
                 @csrf
                 <div class="row">
                     <div class="col-md-4">
@@ -28,7 +28,7 @@
                             <div class="input-group-addon mt-4 mr-3">
                                 <span class="glyphicon glyphicon-th">  From</span>
                             </div>
-                            <input value="{{ date("Y-m-d") }}" id="StartDate" type="text" name="from"
+                            <input value="{{ date("Y-m-d") }}" id="StartDate" type="date" name="from"
                                    class="form-control mt-3">
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                             <div class="input-group-addon mt-4 mr-3 ml-4">
                                 <span class="glyphicon glyphicon-th">  To</span>
                             </div>
-                            <input value="{{date("Y-m-d")}}" id="EndDate" type="text" name="to"
+                            <input value="{{date("Y-m-d")}}" id="EndDate" type="date" name="to"
                                    class="form-control mt-3">
                         </div>
                     </div>
@@ -54,6 +54,7 @@
             </form>
             <!-- /.card-header -->
             <div class="card-body">
+                @if(count($expenses))
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
@@ -94,6 +95,16 @@
                 <div class="pagination">
                     {{ $expenses->links() }}
                 </div>
+                    @else
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert text-center alert-default-secondary">
+                                No Data Found!
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
             <!-- /.card-body -->
         </div>
@@ -120,7 +131,6 @@
             }
         });
 
-        $('.input-group.date').datepicker({format: "yyyy-mm-dd"});
         $('#customer_id').select2();
         $('#customer_mobile').select2();
         function deleteHead(route) {

@@ -14,10 +14,19 @@ class ExpenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $from = $request->get('from');
+        $to = $request->get('to');
         $total = Expence::sum('amount');
-        $expenses = Expence::with('expenseHead')->paginate(20);
+        if ( $from || $to )
+        {
+            $expenses = Expence::with('expenseHead')
+            ->whereBetween('date', array($from, $to))->paginate(20);
+        } else{
+            $expenses = Expence::with('expenseHead')->paginate(20);
+        }
         return view('expenses.manage-expenses', compact('expenses', 'total'));
     }
 
