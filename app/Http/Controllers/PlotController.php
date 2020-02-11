@@ -13,9 +13,24 @@ class PlotController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $plots = Plot::all();
+        $query = $request->get('query');
+        if ($query)
+        {
+            $plots = Plot::where('plot_size', 'like', '%'.$query.'%')
+            ->orWhere('plot_size', 'like', '%'.$query.'%')
+            ->orWhere('rate', 'like', '%'.$query.'%')
+            ->orWhere('road', 'like', '%'.$query.'%')
+            ->orWhere('block', 'like', '%'.$query.'%')
+            ->orWhere('face', 'like', '%'.$query.'%')
+            ->orWhere('quantity', 'like', '%'.$query.'%')
+            ->paginate(20);
+        }
+        else
+        {
+            $plots = Plot::paginate(20);
+        }
         return view('plot.index', compact('plots'));
     }
 

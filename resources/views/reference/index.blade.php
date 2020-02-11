@@ -18,65 +18,93 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive overflow-auto">
-                            <table class="table table-head-fixed text-nowrap">
-                                <thead>
-                                <tr>
-                                    <th>SL</th>
-                                    <th>Name</th>
-                                    <th>Image</th>
-                                    <th>Father</th>
-                                    <th>Mother</th>
-                                    <th>Phone</th>
-                                    <th>Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($references as $member)
-                                <tr>
-                                    <td>{{ $loop->index +1 }}</td>
-                                    <td>{{ $member->name}}</td>
-                                    <td>
-                                        <img style="width: 100px; height: 70px" class="profile-user-img"
-                                             src="{{ asset('/storage/'.$member->image) }}"
-                                             alt="User profile picture">
-                                    </td>
-                                    <td>{{ $member->father_name }}</td>
-                                    <td>{{ $member->mother_name }}</td>
-                                    <td>{{ $member->mobile }}</td>
-                                    <td>
-                                        <div class="row">
-                                            <div class="cols-md-4">
-                                                <a class="btn btn-sm btn-primary" href="{{ route('admin.reference.show', $member) }}">View</a>
-                                            </div>
-                                            <div class="cols-md-4">
-                                                <a class="btn btn-sm ml-2 btn-info" href="{{ route('admin.reference.edit', $member) }}">Edit</a>
-                                            </div>
-                                            <div class="cols-md-4">
-                                                <button class="btn btn-sm ml-2 btn-danger" data-toggle="modal" data-target="#deleteModal"
-                                                        onclick="deleteHead('{{ route('admin.reference.destroy', $member) }}')">
-                                                    Delete
-                                                </button>
+                        <div class="row mb-4 ">
+                            <div class="col-12">
+                                <form class="form-inline float-right ml-3" action="{{ route('admin.reference.index') }}" method="get">
+                                    @csrf
+                                    <div class="input-group input-group-sm">
+                                        <input class="form-control form-control-navbar" name="query" type="search" placeholder="Search" aria-label="Search">
+                                        <div class="input-group-append">
+                                            <button class="btn border-secondary btn-navbar" type="submit">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="table-responsive mt-4 overflow-auto">
+                                @if(count($references))
+                                    <table class="table table-head-fixed text-nowrap">
+                                        <thead>
+                                        <tr>
+                                            <th>SL</th>
+                                            <th>Name</th>
+                                            <th>Image</th>
+                                            <th>Father</th>
+                                            <th>Mother</th>
+                                            <th>Phone</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($references as $member)
+                                            <tr>
+                                                <td>{{ $loop->index +1 }}</td>
+                                                <td>{{ $member->name}}</td>
+                                                <td>
+                                                    <img style="width: 100px; height: 70px" class="profile-user-img"
+                                                         src="{{ asset('/storage/'.$member->image) }}"
+                                                         alt="User profile picture">
+                                                </td>
+                                                <td>{{ $member->father_name }}</td>
+                                                <td>{{ $member->mother_name }}</td>
+                                                <td>{{ $member->mobile }}</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="cols-md-4">
+                                                            <a class="btn btn-sm btn-primary" href="{{ route('admin.reference.show', $member) }}">View</a>
+                                                        </div>
+                                                        <div class="cols-md-4">
+                                                            <a class="btn btn-sm ml-2 btn-info" href="{{ route('admin.reference.edit', $member) }}">Edit</a>
+                                                        </div>
+                                                        <div class="cols-md-4">
+                                                            <button class="btn btn-sm ml-2 btn-danger" data-toggle="modal" data-target="#deleteModal"
+                                                                    onclick="deleteHead('{{ route('admin.reference.destroy', $member) }}')">
+                                                                Delete
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                    <div class="row pagination">
+                                        {{ $references->links() }}
+                                    </div>
+                                @else
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="alert text-center alert-default-secondary">
+                                                No Data Found!
                                             </div>
                                         </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    @include('extra.delete-modal')
-@endsection
+        @include('extra.delete-modal')
+        @endsection
 
-@section('footer-script')
-    <script>
-        function deleteHead(route){
-            $('#deleteForm').attr("action", route);
-        }
-    </script>
+        @section('footer-script')
+            <script>
+                function deleteHead(route){
+                    $('#deleteForm').attr("action", route);
+                }
+            </script>
 @endsection

@@ -7,7 +7,23 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <div class="row mb-4 ">
+                <div class="col-12">
+                    <form class="form-inline float-right ml-3" action="{{ route('admin.land-purchase.index') }}" method="get">
+                        @csrf
+                        <div class="input-group input-group-sm">
+                            <input class="form-control form-control-navbar" name="query" type="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn border-secondary btn-navbar" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @if(count($landPurchases))
+            <table id="example1" class="table table-bordered mt-4 table-striped">
                 <thead>
                 <tr>
                     <th>#SL</th>
@@ -22,7 +38,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if ($landPurchases)
                     @foreach($landPurchases as $purchase)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
@@ -44,9 +59,20 @@
                             </td>
                         </tr>
                     @endforeach
-                @endif
                 </tbody>
             </table>
+                <div class="row pagination">
+                    {{ $landPurchases->links() }}
+                </div>
+                @else
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert text-center alert-default-secondary">
+                            No Data Found!
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
         <!-- /.card-body -->
     </div>

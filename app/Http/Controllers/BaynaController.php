@@ -14,9 +14,24 @@ class BaynaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $baynas = Bayna::all();
+        $query = $request->get('query');
+        if ($query)
+        {
+            $baynas = Bayna::where('donor_name', 'like', '%'.$query.'%')
+                ->orWhere('land_volume', 'like', '%'.$query.'%')
+                ->orWhere('stain_number', 'like', '%'.$query.'%')
+                ->orWhere('ledger', 'like', '%'.$query.'%')
+                ->orWhere('shotok_price', 'like', '%'.$query.'%')
+                ->orWhere('total_price', 'like', '%'.$query.'%')
+                ->orWhere('paid_amount', 'like', '%'.$query.'%')
+            ->paginate(20);
+        }
+        else
+        {
+            $baynas = Bayna::paginate(20);
+        }
         return view('bayna.index', compact('baynas'));
     }
 

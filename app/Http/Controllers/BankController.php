@@ -13,9 +13,19 @@ class BankController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $banks = Bank::all();
+        $query = $request->get('query');
+        if ($query)
+        {
+            $banks = Bank::where('name', 'like', '%'.$query.'%')
+                ->orWhere('ac_number', 'like', '%'.$query.'%')
+                ->paginate(20);
+        }
+        else
+        {
+            $banks = Bank::paginate(20);
+        }
         return view('bank.index', compact('banks'));
     }
 

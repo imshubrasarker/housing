@@ -7,17 +7,32 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>#SL</th>
-                    <th>Bank Name</th>
-                    <th>Account Number</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @if ($banks)
+            <div class="row">
+                <div class="col-12">
+                    <form class="form-inline float-right ml-3" action="{{ route('admin.bank.index') }}" method="get">
+                        @csrf
+                        <div class="input-group input-group-sm">
+                            <input class="form-control form-control-navbar" name="query" type="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn border-secondary btn-navbar" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @if(count($banks))
+                <table id="example1" class="table mt-4 table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>#SL</th>
+                        <th>Bank Name</th>
+                        <th>Account Number</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     @foreach($banks as $bank)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
@@ -35,9 +50,20 @@
                             </td>
                         </tr>
                     @endforeach
-                @endif
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+                <div class="row pagination">
+                    {{ $banks->links() }}
+                </div>
+            @else
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert text-center alert-default-secondary">
+                            No Data Found!
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
         <!-- /.card-body -->
     </div>
