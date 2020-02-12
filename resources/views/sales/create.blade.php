@@ -66,13 +66,6 @@
                     </div>
                 </div>
 
-{{--                <div class="form-group row">--}}
-{{--                    <label for="inputPassword3" class="col-sm-4 col-form-label">Total Price</label>--}}
-{{--                    <div class="col-sm-8">--}}
-{{--                        <input type="text" class="form-control" id="total_price" readonly name="total_price">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Discount</label>
                     <div class="col-sm-8">
@@ -128,7 +121,8 @@
                 $('#rate').val(plot.rate);
                 $('#face').val(plot.face);
                 $('#block').val(plot.block);
-                $('#road').val(plot.road)
+                $('#road').val(plot.road);
+                calculate_price()
             });
 
             function calculate_price() {
@@ -138,6 +132,7 @@
                 let paid = $('#paid_amount').val() ? $('#paid_amount').val() : 0;
                 let due_amount = parseFloat(rate) -parseFloat(discount) - parseFloat(paid);
                 $('#deu_amount').val(due_amount);
+                calculate_installment()
             }
             $('#discount').on('keyup', function () {
                 calculate_price();
