@@ -81,9 +81,12 @@ class SaleController extends Controller
      * @param  \App\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sale $sale)
+    public function edit($id)
     {
-        //
+        $sale = Sale::findOrFail($id);
+        $members = Member::select('serial_id', 'name', 'id')->get();
+        $plots = Plot::all();
+        return view('sales.edit', compact('sale', 'members', 'plots'));
     }
 
     /**
@@ -93,9 +96,28 @@ class SaleController extends Controller
      * @param  \App\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sale $sale)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'member_id' => 'required',
+            'plot_id' => 'required',
+            'due_amount' => 'required',
+            'date' => 'required',
+        ]);
+
+        $sale = Sale::findOrFail($id);
+        $sale->member_id = $request->member_id;
+        $sale->plot_id = $request->plot_id;
+        $sale->date = $request->date;
+        $sale->discount = $request->discount;
+        $sale->paid = $request->paid_amount;
+        $sale->due_amount = $request->due_amount;
+        $sale->installment = $request->installment_number;
+        $sale->installment_amount = $request->installment_amount;
+        $sale->save();
+        Toastr::success('Sales Updated ! :)' ,'Success');
+
+        return redirect()->back();
     }
 
     /**
@@ -104,8 +126,12 @@ class SaleController extends Controller
      * @param  \App\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale $sale)
+    public function destroy($id)
     {
-        //
+        $sale = Sale::findOrFail($id);
+        $sale->delete();
+        Toastr::success('Sales Deleted ! :)' ,'Success');
+
+        return redirect()->back();
     }
 }
